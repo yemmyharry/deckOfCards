@@ -24,7 +24,7 @@ func (d *DeckController) CreateDeck(c *fiber.Ctx) error {
 	d.DeckService[deck.ID] = &deck
 
 	res := struct {
-		ID        string `json:"id"`
+		ID        string `json:"deck_id"`
 		Shuffled  bool   `json:"shuffled"`
 		Remaining int    `json:"remaining"`
 	}{

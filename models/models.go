@@ -1,10 +1,10 @@
 package models
 
 type Deck struct {
-	ID        string `json:"deck_id"`
-	Shuffled  bool   `json:"shuffled"`
-	Remaining int    `json:"remaining"`
-	Cards     []Card `json:"cards"`
+	ID        string  `json:"deck_id"`
+	Shuffled  bool    `json:"shuffled"`
+	Remaining int     `json:"remaining"`
+	Cards     []*Card `json:"cards,omitempty"`
 }
 
 type Card struct {

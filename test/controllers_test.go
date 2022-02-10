@@ -91,7 +91,10 @@ func TestOpenDeck(t *testing.T) {
 }
 
 func TestDrawCard(t *testing.T) {
-	req, _ := http.NewRequest(http.MethodGet, fmt.Sprintf("/api/draw/%s", id), nil)
+	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("/api/draw/%s", id), nil)
+	if err != nil {
+		log.Print(err)
+	}
 	t.Run("Draw 1 cards from deck", func(t *testing.T) {
 		url := req.URL.Query()
 		url.Set("count", "4")
@@ -102,7 +105,7 @@ func TestDrawCard(t *testing.T) {
 		cards := struct {
 			Cards []models.Card `json:"cards"`
 		}{}
-		_ = json.Unmarshal(body, &cards)
+		err = json.Unmarshal(body, &cards)
 		if resp.StatusCode != http.StatusOK {
 			t.Errorf("Expected status code %d, got %d", http.StatusOK, resp.StatusCode)
 		}

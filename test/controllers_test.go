@@ -31,9 +31,15 @@ func TestCreateDeck(t *testing.T) {
 	if err != nil {
 		log.Print(err)
 	}
-	body, _ := ioutil.ReadAll(resp.Body)
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Print(err)
+	}
 	var deck models.Deck
-	_ = json.Unmarshal(body, &deck)
+	err = json.Unmarshal(body, &deck)
+	if err != nil {
+		log.Print(err)
+	}
 	id = deck.ID
 	if resp.StatusCode != http.StatusOK {
 		t.Errorf("Expected status code %d, got %d", http.StatusOK, resp.StatusCode)

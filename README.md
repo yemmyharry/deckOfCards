@@ -50,15 +50,15 @@ go mod tidy
 ```
 go run main.go
 ```
-2. To create a deck of cards, use Postman to make a request to the following URL:
+2. To create a deck of cards, use Postman to make a GET request to the following URL:
 ```
 http://localhost:3000/api/create
 ```
-3. To open a deck of cards, use Postman to make a request to the following URL:
+3. To open a deck of cards, use Postman to make a GET request to the following URL:
 ```
 http://localhost:3000/api/open/{deck_id}
 ```
-4. To draw a card or multiple cards, use Postman to make a request to the following URL:
+4. To draw a card or multiple cards, use Postman to make a GET request to the following URL:
 ```
 http://localhost:3000/api/draw/{deck_id}?count={any number}
 ```

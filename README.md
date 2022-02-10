@@ -31,9 +31,6 @@ An API to create a deck of cards, open a deck of cards, draw one or multiple car
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
 Before this project can be run locally you will need to install [Go](https://golang.org/doc/install)

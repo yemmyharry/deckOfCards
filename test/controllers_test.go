@@ -53,12 +53,24 @@ func TestCreateDeck(t *testing.T) {
 }
 
 func TestOpenDeck(t *testing.T) {
-	req, _ := http.NewRequest(http.MethodGet, fmt.Sprintf("/api/open/%s", id), nil)
-	resp, _ := app.Test(req)
-	body, _ := ioutil.ReadAll(resp.Body)
+	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("/api/open/%s", id), nil)
+	if err != nil {
+		log.Print(err)
+	}
+	resp, err := app.Test(req)
+	if err != nil {
+		log.Print(err)
+	}
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Print(err)
+	}
 
 	var deck models.Deck
-	_ = json.Unmarshal(body, &deck)
+	err = json.Unmarshal(body, &deck)
+	if err != nil {
+		log.Print(err)
+	}
 
 	if resp.StatusCode != http.StatusOK {
 		t.Errorf("Expected status code %d, got %d", http.StatusOK, resp.StatusCode)
